@@ -51,6 +51,9 @@
     <!-- ปุ่มเล่น -->
     <button id="playButton">Play</button>
 
+    <!-- เสียง beep -->
+    <audio id="beepSound" src="beep.mp3" preload="auto"></audio> <!-- หรือเปลี่ยนเป็น beep.wav -->
+
     <script>
         // ฟังก์ชันแปลงวินาทีเป็นรูปแบบ mm:ss
         function formatTime(seconds) {
@@ -59,15 +62,10 @@
             return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
         }
 
-        // ฟังก์ชันสร้างเสียง beep
+        // ฟังก์ชันเล่นเสียง beep
         function playBeep() {
-            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-            const oscillator = audioContext.createOscillator();
-            oscillator.type = 'sine'; // ประเภทคลื่นเสียง (sine wave)
-            oscillator.frequency.setValueAtTime(200, audioContext.currentTime); // ความถี่ 200 Hz
-            oscillator.connect(audioContext.destination);
-            oscillator.start();
-            oscillator.stop(audioContext.currentTime + 3); // หยุดเสียงหลังจาก 3 วินาที
+            const beepSound = document.getElementById('beepSound');
+            beepSound.play();
         }
 
         // ดึงอ้างอิงของปุ่ม, การแสดงเคาท์ดาวน์
