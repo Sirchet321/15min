@@ -51,8 +51,8 @@
     <!-- ปุ่มเล่น -->
     <button id="playButton">Play</button>
 
-    <!-- เสียง beep -->
-    <audio id="beepSound" src="beep.mp3" preload="auto"></audio> <!-- หรือเปลี่ยนเป็น beep.wav -->
+    <!-- เสียง Alarm -->
+    <audio id="alarmSound" src="Alarm03.wav" preload="auto"></audio>
 
     <script>
         // ฟังก์ชันแปลงวินาทีเป็นรูปแบบ mm:ss
@@ -62,10 +62,10 @@
             return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`;
         }
 
-        // ฟังก์ชันเล่นเสียง beep
-        function playBeep() {
-            const beepSound = document.getElementById('beepSound');
-            beepSound.play();
+        // ฟังก์ชันเล่นเสียง Alarm
+        function playAlarm() {
+            const alarmSound = document.getElementById('alarmSound');
+            alarmSound.play();
         }
 
         // ดึงอ้างอิงของปุ่ม, การแสดงเคาท์ดาวน์
@@ -83,9 +83,9 @@
                 if (countdown > 0) {
                     countdownElement.innerText = `${formatTime(countdown)}`;
                 } else {
-                    countdownElement.innerText = "เริ่มเล่นเสียง beep แล้ว!";
+                    countdownElement.innerText = "เริ่มเล่นไฟล์เสียง Alarm แล้ว!";
                     clearInterval(countdownInterval); // หยุดการนับถอยหลัง
-                    playBeep(); // เริ่มเล่นเสียง beep
+                    playAlarm(); // เริ่มเล่นไฟล์เสียง Alarm
                 }
             }, 1000); // 1000 มิลลิวินาที = 1 วินาที
         });
